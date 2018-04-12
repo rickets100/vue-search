@@ -1,6 +1,8 @@
 <style lang="scss">
   .results {
     border: 1px solid dodgerblue;
+    display: flex;
+    justify-content: flex-start;
   }
 </style>
 

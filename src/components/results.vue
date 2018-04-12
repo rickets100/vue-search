@@ -1,28 +1,66 @@
 <style lang="scss">
-  .result {
-    border: 1px solid seagreen;
+  .dish {
+    border-bottom: 1px solid grey;
+    margin: 5px;
+    justify-content: flex-start;
 
-    .title {
-      border: 1px solid orchid;
+    .dish-title {
+      text-align: left;
+      a {
+        text-decoration: none;
+        color: black;
+        font-weight: bold;
+
+        &:hover {
+          color: red;
+          &:after {
+            content: ' >';
+          }
+        }
+      }
     }
 
-    .thumbnail {
+    .dish-details {
+      display: flex;
+      padding-bottom: 10px;
 
-    }
+      .thumbnail-wrapper {
+        border: 1px solid orchid;
+        display: flex;
+        // flex-basis: 25%;
+        justify-content: flex-start;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        width: 100px;
+        height: 100px;
 
-    .ingredients {
-      border: 1px solid orange;
+        // .thumbnail {
+        //   max-width: 107px;
+        // }
+      }
+
+      .ingredients {
+        flex-basis: 75%;
+        padding-left: 8px;
+        text-align: left;
+      }
     }
   }
 </style>
 
 <template>
   <div>
-    <div class="ingredients">
-      <div class="result" v-for="dish in dishes">
-        <a class="title" :href="dish.href" target="_blank">{{ dish.title }}</a>
-        <img class="thumbnail" v-if="dish.thumbnail" :src="dish.thumbnail" />
-        <div class="ingredients">{{ dish.ingredients }}</div>
+    <div>
+      <div class="dish" v-for="dish in dishes">
+        <div class="dish-title">
+          <a :href="dish.href" target="_blank">{{ dish.title }}</a>
+        </div>
+        <div class="dish-details">
+          <div class="thumbnail-wrapper" :style="'background-image: url('+ dish.thumbnail + ');'">
+          </div>
+          <div class="ingredients">{{ dish.ingredients }}</div>
+        </div>
       </div>
     </div>
   </div>
