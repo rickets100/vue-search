@@ -17,7 +17,21 @@
     }
 
     .meal {
+      margin-top: 12px;
       text-transform: capitalize;
+      font-style: italic;
+      font-weight: bold;
+      border-bottom: 1px solid gray;
+
+      &:first-of-type {
+        margin-top: 0;
+      }
+      .dish {
+        border: none;
+        padding: 5px 0 5px 0;
+        text-align: left;
+        font-weight: normal;
+      }
     }
 
     .btn-remove {
@@ -29,10 +43,7 @@
       text-transform: uppercase;
     }
 
-    .dish {
-      padding: 5px 0 5px 0;
-      text-align: left;
-    }
+
   }
 
   .meal-selector{
@@ -67,7 +78,7 @@
         margin-bottom: 10px;
         font-weight: bold;
         font-size: 16px;
-        border-bottom: 3px solid #2e5885;
+        border-bottom: 3px solid red;
       }
 
       .separator {
@@ -106,8 +117,8 @@
         <div class="current-dish">{{ this.currentDish.title }}</div>
         <div v-if="meals.length" class="add-options">Add to an Existing Meal: </div>
         <div v-for="meal,i in meals" class="meal-name">
-          {{meal.name}}
           <button v-on:click="addCurrentDishtoMeal(i)">Add</button>
+          {{meal.name}}
         </div>
         <div v-if="meals.length" class="separator">- OR - </div>
         <div class="add-options">
