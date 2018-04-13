@@ -3,6 +3,7 @@
     max-width: 0;
     min-width: 0;
     margin-left: 20px;
+    padding: 0 5px 0 5px;
     border-left: 1px solid gray;
 
     &.has-meals {
@@ -37,7 +38,7 @@
     .btn-remove {
       border-radius: 3px;
       padding: 3px;
-      background-color: #d9e5f2;
+      background-color: #e0e0eb;
       font-weight: bold;
       color: black;
       text-transform: uppercase;
@@ -102,7 +103,7 @@
 
 <template>
   <div class="meal-planner" :class="{ 'has-meals': meals.length > 0 }">
-    <div class="meals-header">MEALS</div>
+    <div v-if="meals.length > 0" class="meals-header">MEALS</div>
     <div class="meal" v-for="meal,i in meals">
       {{ meal.name }}
       <div class="dish" v-for="dish,j in meal.dishes">
@@ -123,10 +124,9 @@
         <div v-if="meals.length" class="separator">- OR - </div>
         <div class="add-options">
           <label for="new-meal">Create New Meal: </label>
-          <input name="new-meal" v-on:keyup.enter="onAddMealClick()" v-model="newMealName" ></input>
+          <input name="new-meal" v-on:keyup.enter="onAddMealClick()" v-model="newMealName" autofocus></input>
         </div>
         <button v-on:click="onClose()" class="btn-close">X</button>
-
       </div>
     </div>
 

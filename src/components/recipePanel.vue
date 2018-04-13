@@ -4,7 +4,12 @@
   }
 
   .search-bar {
-    margin-bottom: 10px;
+    height: 40px;
+    padding-top: 12px;
+    margin: 0 8px 10px 5px;
+    background-color: #47476b;
+    color: white;
+    font-weight: bold;
   }
 
   .results {
@@ -26,7 +31,7 @@
 <script>
   import EventBus from '../helpers/event-bus.js';
   import RecipePuppy from '../api/rp-api.js';
-  import SearchBar from './search-bar';
+  import SearchBar from './searchBar';
   import Results from './results';
   import MealPlanner from './mealPlanner';
 

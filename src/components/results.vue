@@ -17,14 +17,14 @@
         display: inline-block;
         border-radius: 3px;
         padding: 5px;
-        background-color: #2e5885;
         font-weight: bold;
-        color: white;
         text-transform: uppercase;
+        color: black;
+        background-color: #e0e0eb;
 
         &:hover {
-          color: black;
-          background-color: #d9e5f2;
+          background-color: #47476b;
+          color: white;
         }
       }
 
