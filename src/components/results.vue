@@ -4,17 +4,38 @@
     margin: 5px;
     justify-content: flex-start;
 
-    .dish-title {
-      text-align: left;
-      a {
-        text-decoration: none;
-        color: black;
+    &:first-of-type {
+      border-top: 1px solid grey;
+      padding: 5px;
+    }
+
+    .dish-header {
+      display: flex;
+      justify-content: space-between;
+
+      .btn-add-dish {
         font-weight: bold;
+        padding: 5px;
+        text-transform: uppercase;
+        display: inline-block;
+        color: white;
+        background-color: #2e5885;
 
         &:hover {
-          color: red;
-          &:after {
-            content: ' >';
+          color: black;
+          background-color: #d9e5f2;
+        }
+      }
+
+      .dish-title {
+        text-align: left;
+        a {
+          text-decoration: none;
+          color: black;
+          font-weight: bold;
+
+          &:hover {
+            color: #6699cc;
           }
         }
       }
@@ -52,16 +73,20 @@
   <div>
     <div>
       <div class="dish" v-for="dish in dishes">
-        <div class="dish-title">
-          <a :href="dish.href" target="_blank">{{ dish.title }}</a>
-          <button v-on:click="onAddDishClick(dish)">Add to Meal</button>
+        <div class="dish-header">
+          <div class="dish-title">
+            <a :href="dish.href" target="_blank">{{ dish.title }}</a>
+          </div>
+          <button v-on:click="onAddDishClick(dish)" class="btn-add-dish">Add to Meal</button>
         </div>
         <div class="dish-details">
           <div class="thumbnail-wrapper">
             <div v-if="dish.thumbnail" class="thumbnail" :style="'background-image: url('+ dish.thumbnail + ');'">
             </div>
           </div>
-          <div class="ingredients">{{ dish.ingredients }}</div>
+          <div class="ingredients">
+            {{ dish.ingredients }}
+          </div>
         </div>
       </div>
     </div>

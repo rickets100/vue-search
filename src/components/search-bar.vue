@@ -23,7 +23,6 @@ export default {
   },
   methods: {
     search() {
-      console.log('+++++',this.searchTerm);
       EventBus.$emit('searchRequested', this.searchTerm);
     }
   }

@@ -22,11 +22,33 @@
 
     .meals-list {
       position: fixed;
+      padding: 24px;
       width: 300px;
       height: 300px;
       top: calc(50% - 150px);
       left: calc(50% - 125px);
       background-color: #fff;
+
+      .new-meal {
+
+      }
+
+      .meal-name {
+        font-weight: bold;
+      
+      }
+
+      .btn-close {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        font-size: 16px;
+        padding: none;
+        background-color: #2e5885;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: white;
+      }
     }
   }
 </style>
@@ -45,14 +67,14 @@
     <div v-if="currentDish" class="meal-selector">
       <div class="mask"></div>
       <div class="meals-list">
-        <label for="new-meal">New Meal: </label>
-          <input name="new-meal" v-on:keyup.enter="onAddMealClick()" v-model="newMealName"></input>
+        <label for="new-meal" class="new-meal">New Meal: </label>
+        <input name="new-meal" v-on:keyup.enter="onAddMealClick()" v-model="newMealName"></input>
 
-        <div v-for="meal,i in meals">
+        <div v-for="meal,i in meals" class="meal-name">
           {{meal.name}}
-          <button v-on:click="addCurrentDishtoMeal(i)">Add to This Meal</button>
+          <button v-on:click="addCurrentDishtoMeal(i)">Add</button>
         </div>
-        <button v-on:click="onClose()">Close</button>
+        <button v-on:click="onClose()" class="btn-close">X</button>
 
       </div>
     </div>
@@ -86,7 +108,6 @@
     methods: {
       onAddDish(dish) {
         this.currentDish =  dish;
-        console.log('_______', this.currentDish);
       },
       addCurrentDishtoMeal(index) {
         this.meals[index].dishes.push(this.currentDish);
@@ -95,12 +116,11 @@
       removeCurrentDishFromMeal(mealIndex, dishIndex) {
         this.meals[mealIndex].dishes.splice(dishIndex,1);
       },
-      onAddMealClick(foo) {
+      onAddMealClick() {
         let temp = {
           "name": this.newMealName,
           "dishes": []
         }
-        console.log('foo', foo);
         this.meals.push(temp);
         this.newMealName = null;
       },

@@ -61,7 +61,6 @@
         RecipePuppy.search({
           q: this.searchTerm
         }).then((response) => {
-          console.log('response:', response);
           this.results = response.data.results;
           EventBus.$emit('gotResults', this.results);
         }).catch((error) => {
