@@ -134,13 +134,10 @@
 </template>
 
 <script>
-  import EventBus from '../helpers/event-bus.js';
+  import EventBus from '../helpers/eventBus.js';
 
   export default {
     name: 'mealPlanner',
-    components: {
-
-    },
     data() {
       return {
         foo: '',
@@ -178,8 +175,6 @@
       onClose() {
         this.currentDish = null;
       }
-    },
-    watch: {
     }
   }
 </script>

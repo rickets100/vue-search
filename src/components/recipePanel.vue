@@ -29,8 +29,8 @@
 </template>
 
 <script>
-  import EventBus from '../helpers/event-bus.js';
-  import RecipePuppy from '../api/rp-api.js';
+  import EventBus from '../helpers/eventBus.js';
+  import RecipePuppy from '../api/rpApi.js';
   import SearchBar from './searchBar';
   import Results from './results';
   import MealPlanner from './mealPlanner';

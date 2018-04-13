@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import EventBus from '../helpers/event-bus.js';
+import EventBus from '../helpers/eventBus.js';
 
 export default {
   name: 'searchBar',
