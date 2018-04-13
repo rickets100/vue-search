@@ -14,12 +14,13 @@
       justify-content: space-between;
 
       .btn-add-dish {
-        font-weight: bold;
-        padding: 5px;
-        text-transform: uppercase;
         display: inline-block;
-        color: white;
+        border-radius: 3px;
+        padding: 5px;
         background-color: #2e5885;
+        font-weight: bold;
+        color: white;
+        text-transform: uppercase;
 
         &:hover {
           color: black;
@@ -36,6 +37,9 @@
 
           &:hover {
             color: #6699cc;
+            &::after {
+              content: " >";
+            }
           }
         }
       }

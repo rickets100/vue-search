@@ -2,6 +2,8 @@
   .meal-planner {
     max-width: 0;
     min-width: 0;
+    margin-left: 20px;
+    border-left: 1px solid gray;
 
     &.has-meals {
       max-width: auto;
@@ -28,25 +30,36 @@
       left: calc(50% - 125px);
       background-color: #fff;
 
-      .new-meal {
-
+      .add-options {
+        text-align: left;
       }
 
       .meal-name {
         font-weight: bold;
+        text-align: left;
 
+        .separator {
+          padding: 20px 0 20px 0;
+        }
+      }
+
+      .current-dish {
+        margin-bottom: 10px;
+        font-weight: bold;
+        font-size: 16px;
+        border-bottom: 3px solid #2e5885;
       }
 
       .btn-close {
         position: absolute;
         top: 5px;
         right: 5px;
-        font-size: 16px;
         padding: none;
         background-color: #2e5885;
+        font-size: 16px;
         font-weight: bold;
-        text-transform: uppercase;
         color: white;
+        text-transform: uppercase;
       }
     }
   }
@@ -65,15 +78,17 @@
     <div v-if="currentDish" class="meal-selector">
       <div class="mask"></div>
       <div class="meals-list">
-        <div v-if="meals.length" >Add to an Existing Meal</div>
+        <div class="current-dish">{{ this.currentDish.title }}</div>
+        <div v-if="meals.length" class="add-options">Add to an Existing Meal: </div>
         <div v-for="meal,i in meals" class="meal-name">
           {{meal.name}}
           <button v-on:click="addCurrentDishtoMeal(i)">Add</button>
-          <div>- OR - </div>
+          <div class="separator">- OR - </div>
         </div>
-        <label for="new-meal" class="new-meal">Create New Meal: </label>
-        <input name="new-meal" v-on:keyup.enter="onAddMealClick()" v-model="newMealName"></input>
-
+        <div class="add-options">
+          <label for="new-meal">Create New Meal: </label>
+          <input name="new-meal" v-on:keyup.enter="onAddMealClick()" v-model="newMealName" ></input>
+        </div>
         <button v-on:click="onClose()" class="btn-close">X</button>
 
       </div>
