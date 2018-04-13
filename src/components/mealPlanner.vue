@@ -4,7 +4,6 @@
     min-width: 0;
 
     &.has-meals {
-      border: 1px solid red;
       max-width: auto;
       min-width: 230px;
     }
@@ -35,7 +34,7 @@
 
       .meal-name {
         font-weight: bold;
-      
+
       }
 
       .btn-close {
@@ -55,7 +54,6 @@
 
 <template>
   <div class="meal-planner" :class="{ 'has-meals': meals.length > 0 }">
-
     <div class="meal" v-for="meal,i in meals">
       {{meal.name}}
       <div class="dish" v-for="dish,j in meal.dishes">
@@ -67,13 +65,15 @@
     <div v-if="currentDish" class="meal-selector">
       <div class="mask"></div>
       <div class="meals-list">
-        <label for="new-meal" class="new-meal">New Meal: </label>
-        <input name="new-meal" v-on:keyup.enter="onAddMealClick()" v-model="newMealName"></input>
-
+        <div v-if="meals.length" >Add to an Existing Meal</div>
         <div v-for="meal,i in meals" class="meal-name">
           {{meal.name}}
           <button v-on:click="addCurrentDishtoMeal(i)">Add</button>
+          <div>- OR - </div>
         </div>
+        <label for="new-meal" class="new-meal">Create New Meal: </label>
+        <input name="new-meal" v-on:keyup.enter="onAddMealClick()" v-model="newMealName"></input>
+
         <button v-on:click="onClose()" class="btn-close">X</button>
 
       </div>
