@@ -22,6 +22,8 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 
 
 # resources used
+https://github.com/vuejs/vue-cli
 https://vuejs.org/v2/guide/
 https://alligator.io/vuejs/global-eventBus/
 https://medium.com/@andrejsabrickis/https-medium-com-andrejsabrickis-create-simple-eventbus-to-communicate-between-vue-js-components-cdc11cd59860
+...and StackOverflow, of course
