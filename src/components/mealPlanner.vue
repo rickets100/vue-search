@@ -9,6 +9,30 @@
       max-width: auto;
       min-width: 230px;
     }
+
+    .meals-header {
+      padding-bottom: 10px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .meal {
+      text-transform: capitalize;
+    }
+
+    .btn-remove {
+      border-radius: 3px;
+      padding: 3px;
+      background-color: #d9e5f2;
+      font-weight: bold;
+      color: black;
+      text-transform: uppercase;
+    }
+
+    .dish {
+      padding: 5px 0 5px 0;
+      text-align: left;
+    }
   }
 
   .meal-selector{
@@ -49,7 +73,7 @@
       .separator {
         padding: 20px 0 20px 0;
       }
-      
+
       .btn-close {
         position: absolute;
         top: 5px;
@@ -67,11 +91,12 @@
 
 <template>
   <div class="meal-planner" :class="{ 'has-meals': meals.length > 0 }">
+    <div class="meals-header">MEALS</div>
     <div class="meal" v-for="meal,i in meals">
-      {{meal.name}}
+      {{ meal.name }}
       <div class="dish" v-for="dish,j in meal.dishes">
+        <button v-on:click="removeCurrentDishFromMeal(i,j)" class="btn-remove">X</button>
         {{ dish.title }}
-        <button v-on:click="removeCurrentDishFromMeal(i,j)">Remove</button>
       </div>
     </div>
 
