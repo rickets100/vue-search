@@ -11,14 +11,19 @@ import EventBus from '../helpers/event-bus.js';
 
 export default {
   name: 'searchBar',
+  mounted(){
+    this.$nextTick(() =>{
+      this.search();
+    })
+  },
   data() {
     return {
-      searchTerm: '',
+      searchTerm: 'pizza',
    }
   },
   methods: {
     search() {
-      console.log('+++++');
+      console.log('+++++',this.searchTerm);
       EventBus.$emit('searchRequested', this.searchTerm);
     }
   }

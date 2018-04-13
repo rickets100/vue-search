@@ -24,22 +24,21 @@
       display: flex;
       padding-bottom: 10px;
 
-      .thumbnail-wrapper {
-        border: 1px solid orchid;
+      .thumbnail-wrapper{
         display: flex;
-        // flex-basis: 25%;
-        justify-content: flex-start;
-        background-repeat: no-repeat;
-        background-position: center center;
-        background-size: cover;
         width: 100px;
         height: 100px;
 
-        // .thumbnail {
-        //   max-width: 107px;
-        // }
-      }
+        .thumbnail{
+          background-repeat: no-repeat;
+          background-position: center center;
+          background-size: cover;
+          width: 100px;
+          height: 100px;
+          border-radius: 2px;
+        }
 
+      }
       .ingredients {
         flex-basis: 75%;
         padding-left: 8px;
@@ -55,9 +54,12 @@
       <div class="dish" v-for="dish in dishes">
         <div class="dish-title">
           <a :href="dish.href" target="_blank">{{ dish.title }}</a>
+          <button v-on:click="onAddDishClick(dish)">Add to Meal</button>
         </div>
         <div class="dish-details">
-          <div class="thumbnail-wrapper" :style="'background-image: url('+ dish.thumbnail + ');'">
+          <div class="thumbnail-wrapper">
+            <div v-if="dish.thumbnail" class="thumbnail" :style="'background-image: url('+ dish.thumbnail + ');'">
+            </div>
           </div>
           <div class="ingredients">{{ dish.ingredients }}</div>
         </div>
@@ -75,6 +77,12 @@ export default {
     dishes: {
       type: Array,
       required: true
+    }
+  },
+  methods: {
+    onAddDishClick(dish) {
+      console.log('onAddDishClick', dish);
+      EventBus.$emit('addDish', dish);
     }
   }
 }

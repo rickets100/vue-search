@@ -1,6 +1,13 @@
 <style lang="scss">
+  .recipe-panel-content{
+      display: flex;
+  }
+
+  .search-bar {
+    margin-bottom: 10px;
+  }
+
   .results {
-    border: 1px solid dodgerblue;
     display: flex;
     justify-content: flex-start;
   }
@@ -8,8 +15,11 @@
 
 <template>
   <div>
-    <SearchBar></SearchBar>
-    <Results :dishes="results" class="results"></Results>
+    <SearchBar class="search-bar"></SearchBar>
+    <div class="recipe-panel-content">
+      <Results :dishes="results" class="results"></Results>
+      <MealPlanner></MealPlanner>
+    </div>
   </div>
 </template>
 
@@ -18,17 +28,19 @@
   import RecipePuppy from '../api/rp-api.js';
   import SearchBar from './search-bar';
   import Results from './results';
+  import MealPlanner from './mealPlanner';
 
   export default {
     name: 'recipePanel',
     components: {
       SearchBar,
-      Results
+      Results,
+      MealPlanner
     },
     data() {
       return {
         searchTerm: '',
-        results: [],
+        results: []
      }
     },
     mounted(){
