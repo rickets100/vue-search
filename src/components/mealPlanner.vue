@@ -37,10 +37,6 @@
       .meal-name {
         font-weight: bold;
         text-align: left;
-
-        .separator {
-          padding: 20px 0 20px 0;
-        }
       }
 
       .current-dish {
@@ -50,6 +46,10 @@
         border-bottom: 3px solid #2e5885;
       }
 
+      .separator {
+        padding: 20px 0 20px 0;
+      }
+      
       .btn-close {
         position: absolute;
         top: 5px;
@@ -83,8 +83,8 @@
         <div v-for="meal,i in meals" class="meal-name">
           {{meal.name}}
           <button v-on:click="addCurrentDishtoMeal(i)">Add</button>
-          <div class="separator">- OR - </div>
         </div>
+        <div v-if="meals.length" class="separator">- OR - </div>
         <div class="add-options">
           <label for="new-meal">Create New Meal: </label>
           <input name="new-meal" v-on:keyup.enter="onAddMealClick()" v-model="newMealName" ></input>
