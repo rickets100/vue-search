@@ -45,12 +45,15 @@
     <div v-if="currentDish" class="meal-selector">
       <div class="mask"></div>
       <div class="meals-list">
+        <label for="new-meal">New Meal: </label>
+          <input name="new-meal" v-on:keyup.enter="onAddMealClick()" v-model="newMealName"></input>
+
         <div v-for="meal,i in meals">
           {{meal.name}}
           <button v-on:click="addCurrentDishtoMeal(i)">Add to This Meal</button>
         </div>
-        <label for="new-meal">New Meal: </label>
-          <input name="new-meal" v-on:keyup.enter="onAddMealClick()" v-model="newMealName"></input>
+        <button v-on:click="onClose()">Close</button>
+
       </div>
     </div>
 
@@ -100,6 +103,9 @@
         console.log('foo', foo);
         this.meals.push(temp);
         this.newMealName = null;
+      },
+      onClose() {
+        this.currentDish = null;
       }
     },
     watch: {
