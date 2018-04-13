@@ -1,12 +1,12 @@
 <style lang="scss">
   .dish {
-    border-bottom: 1px solid grey;
-    margin: 5px;
     justify-content: flex-start;
+    margin: 5px;
+    border-bottom: 1px solid grey;
 
     &:first-of-type {
-      border-top: 1px solid grey;
       padding: 5px;
+      border-top: 1px solid grey;
     }
 
     .dish-header {
@@ -15,12 +15,12 @@
 
       .btn-add-dish {
         display: inline-block;
-        border-radius: 3px;
         padding: 5px;
+        background-color: #e0e0eb;
+        border-radius: 3px;
+        color: black;
         font-weight: bold;
         text-transform: uppercase;
-        color: black;
-        background-color: #e0e0eb;
 
         &:hover {
           background-color: #47476b;
@@ -30,10 +30,11 @@
 
       .dish-title {
         text-align: left;
+
         a {
-          text-decoration: none;
           color: black;
           font-weight: bold;
+          text-decoration: none;
 
           &:hover {
             color: #6699cc;
@@ -49,12 +50,12 @@
       display: flex;
       padding-bottom: 10px;
 
-      .thumbnail-wrapper{
+      .thumbnail-wrapper {
         display: flex;
         width: 100px;
         height: 100px;
 
-        .thumbnail{
+        .thumbnail {
           background-repeat: no-repeat;
           background-position: center center;
           background-size: cover;
@@ -110,7 +111,6 @@ export default {
   },
   methods: {
     onAddDishClick(dish) {
-      console.log('onAddDishClick', dish);
       EventBus.$emit('addDish', dish);
     }
   }

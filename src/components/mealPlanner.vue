@@ -79,7 +79,7 @@
         margin-bottom: 10px;
         font-weight: bold;
         font-size: 16px;
-        border-bottom: 3px solid red;
+        border-bottom: 3px solid #990000;
       }
 
       .separator {
@@ -140,7 +140,6 @@
     name: 'mealPlanner',
     data() {
       return {
-        foo: '',
         meals: [
       ],
       currentDish: null,
@@ -155,14 +154,14 @@
     },
     methods: {
       onAddDish(dish) {
-        this.currentDish =  dish;
+        this.currentDish = dish;
       },
       addCurrentDishtoMeal(index) {
         this.meals[index].dishes.push(this.currentDish);
         this.currentDish = null;
       },
       removeCurrentDishFromMeal(mealIndex, dishIndex) {
-        this.meals[mealIndex].dishes.splice(dishIndex,1);
+        this.meals[mealIndex].dishes.splice(dishIndex, 1);
       },
       onAddMealClick() {
         let temp = {
